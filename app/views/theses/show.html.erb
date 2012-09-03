@@ -17,7 +17,7 @@
 
 <p>
   <b>Text (preview):</b>
-  <%= @thesis.text.empty? ? 'Not indexed yet!' : @thesis.text[0..500]  %>
+  <%= @thesis.text? ? @thesis.text[0..500] : 'Not indexed yet!'  %>
 </p>
 
 

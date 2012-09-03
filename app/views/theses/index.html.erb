@@ -16,7 +16,7 @@
     <td><%= thesis.title %></td>
     <td><%= thesis.author %></td>
     <td><%= thesis.year %></td>
-    <td><%= thesis.text.empty? ? 'Not indexed yet!' : thesis.text[0..200]  %></td>
+    <td><%= thesis.text? ? thesis.text[0..200] : 'Not indexed yet!' %></td>
     <td><%= link_to 'Show', thesis %></td>
     <td><%= link_to 'Edit', edit_thesis_path(thesis) %></td>
     <td><%= link_to 'Destroy', thesis, method: :delete, data: { confirm: 'Are you sure?' } %></td>

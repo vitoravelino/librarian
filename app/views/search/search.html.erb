@@ -28,7 +28,7 @@
             <h2><%= link_to hit.instance.title, "/uploads/#{hit.instance.file}" %></h2>
             <span class="publish">Published by <%= hit.instance.author %> at <time datetime="<%= hit.instance.year %>"><%= hit.instance.year %></time></span>
           </header>
-          <p><%= sanitize hit.highlights(:text).first.format { |word| "<strong>#{word}</strong>" } %></p>
+          <p><% excerpt(hit) %></p>
         </article>
         <hr />
       <% end %>
