@@ -1,6 +1,6 @@
 ## Librarian 
 
-A simple index of documents
+A simple index of documents (pdf)
 
 ## Prelude
 
@@ -18,4 +18,4 @@ I also used Docsplit that depends on *pdftotext* to parse the documents to extra
 
 ## TODO
 
-Better description
+Better description and a 'How to setup and run'
