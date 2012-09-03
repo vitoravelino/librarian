@@ -1,0 +1,82 @@
+// Place all the styles related to the search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  padding: 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+a {
+    color: #222;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #222;
+}
+
+a:hover {
+    color: lighten(#222, 12%);
+}
+
+.main {
+  width: 400px;
+  height: 400px;
+  margin: -230px 0 0 -200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  
+  .h1 {
+    width: 278px;
+    height: 300px;
+    margin: 0 auto;
+    background-image: image-url('librarian-278x300.png');
+  }
+
+  .add-document {
+    text-align: center;
+  }
+}
+
+
+.search {
+  .header {
+    overflow: hidden;
+
+    img {
+      margin: 0 15px 0 0;
+      float: left;
+    }
+  }
+  
+  .h1 {
+    margin: 5px 0;
+  }
+  
+  .search-form {
+    width: 400px;
+    line-height: 108px;
+    float: left;
+  }
+  
+  .result {
+    h2 {
+      margin: 0;
+      font-weight: 400;
+    }
+    .publish {
+      font-size: 13px;
+    }
+    p {
+      margin: 5px 0;
+    }
+  }
+}
+
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+}

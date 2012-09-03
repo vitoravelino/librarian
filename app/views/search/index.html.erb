@@ -1,0 +1,12 @@
+<% title "Simple index of documents" %>
+
+<section class="main">
+    <header>
+        <h1 class="h1 ir" title="Librarian - Simple index of documents">Librarian - Simple index of documents</h1>
+    </header>
+    <%= form_tag({:action => "index"}, :method => "get") do %>
+        <%= text_field_tag :q, params[:q], :class => "search-input", :autofocus => true %>
+        <%= submit_tag "Search", :class => "visuallyhidden" %>
+    <% end %>
+    <p class="add-document"><%= link_to "Add a new document", new_thesis_path %></p>
+</section>

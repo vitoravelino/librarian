@@ -1,0 +1,39 @@
+<% title "Result search for #{params[:q]}" %>
+
+<section class="search">
+  <header class="header">
+    
+    <h1 class="h1" title="Librarian - Simple index of documents">Librarian - Simple index of documents</a></h1>
+    
+    <div class="search-box">
+      <a href="/">
+        <%= image_tag("librarian-100x108.png", :title => "Librarian") %>
+      </a> <!-- never do this. haha --> 
+      
+      <%= form_tag({:action => "index"}, :class => 'search-form', :method => "get") do %>
+        <%= text_field_tag :q, params[:q], :class => "search-input" %>
+        <%= submit_tag "Search", :class => "visuallyhidden" %>
+      <% end %>
+    </div> <!-- .search-box -->
+  </header>
+
+  <section class="results">
+    <% if @search.hits.empty? %>
+      <p>No results for <em><%= params[:q] %></em></p>
+    <% else %>
+      <p><%= @search.total %> document<%= @search.total > 1 ? 's' : '' %> found for <em><%= params[:q] %></em>:</p>
+      <% @search.hits.each do |hit| %>
+        <article class="result">
+          <header>
+            <h2><%= link_to hit.instance.title, "/uploads/#{hit.instance.file}" %></h2>
+            <span class="publish">Published by <%= hit.instance.author %> at <time datetime="<%= hit.instance.year %>"><%= hit.instance.year %></time></span>
+          </header>
+          <p><%= sanitize hit.highlights(:text).first.format { |word| "<strong>#{word}</strong>" } %></p>
+        </article>
+        <hr />
+      <% end %>
+    <% end %>
+
+    <%= will_paginate @search.hits %>
+  </section> <!-- .results -->
+</section>

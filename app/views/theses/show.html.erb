@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @thesis.title %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%= @thesis.author %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @thesis.year %>
+</p>
+
+<p>
+  <b>Text (preview):</b>
+  <%= @thesis.text.empty? ? 'Not indexed yet!' : @thesis.text[0..500]  %>
+</p>
+
+
+<%= link_to 'Edit', edit_thesis_path(@thesis) %> |
+<%= link_to 'Back', theses_path %>
