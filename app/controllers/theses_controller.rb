@@ -68,6 +68,11 @@ class ThesesController < ApplicationController
   # PUT /theses/1.json
   def update
     @thesis = Thesis.find(params[:id])
+    @thesis.file = if params[:file] then 
+                      params[:file].original_file 
+                   else 
+                      @thesis.file 
+                   end
 
     respond_to do |format|
       if @thesis.update_attributes(params[:thesis])

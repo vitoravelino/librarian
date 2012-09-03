@@ -20,6 +20,15 @@ a:hover {
     color: lighten(#222, 12%);
 }
 
+.error_explanation li {
+  color: #dd0000;
+}
+
+.field_with_errors {
+  color: #dd0000;
+  display: inline-block;
+}
+
 .main {
   width: 400px;
   height: 400px;
@@ -39,7 +48,6 @@ a:hover {
     text-align: center;
   }
 }
-
 
 .search {
   .header {
@@ -75,8 +83,21 @@ a:hover {
   }
 }
 
-
 .search-input {
   width: 100%;
   max-width: 400px;
+}
+
+.internal-header {
+  overflow: hidden;
+
+  img {
+    float: left;
+  }
+  h1 {
+    margin: 0 0 0 10px;
+    padding: 0;
+    float: left;
+    line-height: 108px;
+  }
 }

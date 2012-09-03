@@ -1,7 +1,7 @@
 <%= form_for(@thesis, :html => { :multipart => true }) do |f| %>
   <% if @thesis.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@thesis.errors.count, "error") %> prohibited this thesis from being saved:</h2>
+    <div id="error_explanation" class="error_explanation">
+      <h3><%= pluralize(@thesis.errors.count, "error") %> prohibited this thesis from being saved:</h3>
 
       <ul>
       <% @thesis.errors.full_messages.each do |msg| %>

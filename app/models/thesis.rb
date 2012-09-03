@@ -1,7 +1,11 @@
 class Thesis < ActiveRecord::Base
   attr_accessible :author, :text, :title, :year, :file
 
-  validates_presence_of :author, :title, :year, :file, :message => "Can't be blank"
+  validates :file, :format => { :with => /\A[a-zA-Z0-9_-]+\.pdf\z/, 
+    :message => "accepts only PDF files named with [a-zA-Z0-9_-] chars" }
+  validates :year, :format => { :with => /[0-9]{4}/, 
+    :message => "accepts only numbers in YYYY format" }
+  validates_presence_of :author, :title, :year, :file, :message => "can't be blank"
 
   after_destroy :delete_file
 
@@ -14,7 +18,6 @@ class Thesis < ActiveRecord::Base
 
   private
     def delete_file
-      puts "@@@@@@@@@@@@@"
       path = Rails.root.join('public', 'uploads', "#{self.file}")
       path.delete if path.exist?
     end

@@ -1,5 +1,5 @@
 Librarian::Application.routes.draw do
-  get "search/index"
+  get "search" => "search#index", :as => :search
 
   get "search/search"
 
