@@ -15,6 +15,7 @@ end
 
 group :production do
   gem 'mysql2', '~> 0.3.11'
+  gem 'daemons', '~> 1.1.9'
 end
 
 # Gems used only for assets and not required

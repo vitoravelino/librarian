@@ -16,3 +16,6 @@
 
 # solr data
 /solr/data/development
+
+# uploads
+/public/uploads
