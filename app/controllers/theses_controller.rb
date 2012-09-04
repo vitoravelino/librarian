@@ -67,15 +67,20 @@ class ThesesController < ApplicationController
   # PUT /theses/1
   # PUT /theses/1.json
   def update
+    uploaded_io = params[:file]
     @thesis = Thesis.find(params[:id])
-    @thesis.file = if params[:file] then 
-                      params[:file].original_file 
-                   else 
-                      @thesis.file 
-                   end
+    @thesis.file = (uploaded_io.nil? ? @thesis.file : uploaded_io.original_filename)
 
     respond_to do |format|
       if @thesis.update_attributes(params[:thesis])
+        # saving file - I couldn't do this in a background job
+        File.open(Rails.root.join('public', 'uploads', "#{@thesis.id}#{uploaded_io.original_filename}"), 'wb') do |file|
+         file.write(uploaded_io.read)
+        end
+
+        # queueing index job
+        Delayed::Job.enqueue IndexingJob.new(@thesis)
+
         format.html { redirect_to @thesis, notice: 'Thesis was successfully updated.' }
         format.json { head :no_content }
       else
